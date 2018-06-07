@@ -14,6 +14,6 @@
 Auth::routes();
 
 //Route::get('/', 'HomeController@index')->name('home');
-
+Config::set('debugbar.enabled', false);
 Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
 Route::get('/leaflet', 'Frontend\HomeController@leaflet')->name('frontend.leaflet');
