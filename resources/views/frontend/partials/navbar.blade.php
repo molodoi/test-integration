@@ -1,46 +1,33 @@
-<nav class="navbar navbar-expand-md navbar-light fixed-top navbar-main-menu">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">                    
-                    <li><a class="nav-link" href="{{ route('frontend.leaflet') }}">Leaflet</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Become Partner') }}</a></li>
-                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Become Host') }}</a></li>
-                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                        <li><a class="btn btn-custom-outline" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+<nav class="white">
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Logo</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1" data-beloworigin="true">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+@section('javascript')
+<script type="text/javascript">
+    (function($){
+        $(function(){
+            $(".dropdown-trigger").dropdown({ 
+                inDuration: 300,
+        outDuration: 225,
+        hover: true, // Activate on hover
+        belowOrigin: true, // Displays dropdown below the button
+        alignment: 'right' // Displays dropdown with edge aligned to the left of button
+            });
+        }); // end of document ready
+    })(jQuery);
+</script>
+@endsection
